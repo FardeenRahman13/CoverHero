@@ -34,7 +34,11 @@ export async function buildPdf(d: CoverData, src: string) {
   for (const [label, value] of rows) {
     if (!value.trim()) continue;
     doc.setFont("helvetica", "normal").setFontSize(8).setTextColor(90);
-    doc.text(label.toUpperCase().split("").join(String.fromCharCode(8202)), 105, y, { align: "center" }); y += 5.5;
+    const chars = label.toUpperCase().split(""), gap = 0.423; // 0.15em at 8pt, matches the preview
+    const total = chars.reduce((a, ch) => a + doc.getTextWidth(ch), 0) + gap * (chars.length - 1);
+    let x = 105 - total / 2;
+    for (const ch of chars) { doc.text(ch, x, y); x += doc.getTextWidth(ch) + gap; }
+    y += 5.5;
     doc.setFont("times", "normal").setFontSize(13).setTextColor(0);
     center(doc.splitTextToSize(value.trim(), 150), 6); y += 8;
   }
