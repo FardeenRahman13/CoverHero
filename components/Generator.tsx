@@ -9,9 +9,9 @@ const fields: { k: keyof CoverData; label: string; ph: string; req?: boolean }[]
   { k: "name", label: "Student name", ph: "Ayesha Rahman", req: true },
   { k: "id", label: "Student ID", ph: "23101234", req: true },
   { k: "section", label: "Section", ph: "07", req: true },
-  { k: "course", label: "Course title", ph: "Introduction to Programming", req: true },
-  { k: "faculty", label: "Faculty name", ph: "Dr. Karim Hossain", req: true },
-  { k: "code", label: "Course code", ph: "CSE110" },
+  { k: "code", label: "Course code", ph: "CSE110", req: true },
+  { k: "course", label: "Course title", ph: "Introduction to Programming" },
+  { k: "faculty", label: "Faculty name", ph: "Dr. Karim Hossain" },
   { k: "title", label: "Assignment title", ph: "Assignment 2: Sorting algorithms" },
 ];
 export default function Generator() {
